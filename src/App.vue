@@ -1,17 +1,19 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+    <h1 class="title is-1">Username's Github Project Portfolio</h1>
+    <!-- <img src="./assets/logo.png"> -->
+    <!-- <hello></hello> -->
+    <project-list></project-list>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import ProjectList from './components/Project-list'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    ProjectList
   }
 }
 </script>
@@ -25,4 +27,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>
