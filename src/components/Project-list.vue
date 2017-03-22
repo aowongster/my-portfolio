@@ -5,11 +5,11 @@
       <div class="tile is-child box">
         <ul>
         <template v-for="(tag, index) in tags">
-          <tag :tag="tag"></tag>
+          <tag :tag="tag" v-on:filterTag="filterRepos"></tag>
         </template>
         </ul>
       </div>
-      <template v-for="(repo, index) in repoData">
+      <template v-for="(repo, index) in displayData">
         <project :repo="repo"></project>
       </template>
     </div>
@@ -33,7 +33,8 @@ export default {
   data () {
     return {
       username: 'your username',
-      repoData: []
+      repoData: [],
+      displayData: []
     }
   },
   mounted () {
@@ -70,8 +71,16 @@ export default {
           this.repoData = response.data.sort(function (a, b) {
             return new Date(b.updated_at) - new Date(a.updated_at)
           })
+
+          this.displayData = this.repoData.slice() // copy array by val
           // todo sort this
         }.bind(this))
+    },
+    // filter and pass tags to website
+    filterRepos (tag) {
+      this.displayData = this.repoData.filter((repo) => {
+        return repo.language === tag
+      })
     }
   }
 }
