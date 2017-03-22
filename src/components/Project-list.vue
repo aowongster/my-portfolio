@@ -1,6 +1,14 @@
 <template lang="html">
   <div class="tile is-ancestor">
+
     <div class="tile is-parent is-vertical">
+      <div class="tile is-child box">
+        <ul>
+        <template v-for="(count, key) in tags">
+          <li>{{key}}:{{count}}</li>
+        </template>
+        </ul>
+      </div>
       <template v-for="(repo, index) in repoData">
         <project :repo="repo"></project>
       </template>
@@ -28,6 +36,19 @@ export default {
   },
   mounted () {
     this.getRepos('aowongster')
+  },
+  computed: {
+    tags () {
+      let tagDict = {}
+      for (let i = 0; i < this.repoData.length; i++) {
+        let lang = this.repoData[i].language
+        if (lang) {
+          tagDict[lang] = tagDict[lang] + 1 || 1
+        }
+      }
+      console.log(tagDict)
+      return tagDict
+    }
   },
   methods: {
     getRepos (username) {
