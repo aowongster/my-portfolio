@@ -5,7 +5,7 @@
       <div class="tile is-child box">
         <ul>
         <template v-for="(tag, index) in tags">
-          <li>{{tag[0]}}<span>{{tag[1]}}</span></li>
+          <tag :tag="tag"></tag>
         </template>
         </ul>
       </div>
@@ -22,11 +22,13 @@
 
 import axios from 'axios'
 import Project from './Project'
+import Tag from './Tag'
 
 export default {
   name: 'project-list',
   components: {
-    Project
+    Project,
+    Tag
   },
   data () {
     return {
@@ -76,12 +78,5 @@ export default {
 </script>
 
 <style lang="css">
-li {
-  display: inline-block;
-  padding: 5px;
-}
 
-li span {
-  display: block;
-}
 </style>
