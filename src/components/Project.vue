@@ -3,6 +3,7 @@
     <article  class="tile is-child box">
       <p class="title is-3" @click="linkClick(repo.html_url)">{{repo.name}}</p>
       <p class="subtitle">{{repo.description}}</p>
+      <p class="subtitle is-5">{{repo.language}}</p>
     </article>
   </div>
 </template>

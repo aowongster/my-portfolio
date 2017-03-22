@@ -33,8 +33,10 @@ export default {
     getRepos (username) {
       return axios.get(`https://api.github.com/users/${username}/repos`)
         .then(function (response) {
-          console.log(response.data)
-          this.repoData = response.data
+          // console.log(response.data)
+          this.repoData = response.data.sort(function (a, b) {
+            return new Date(b.updated_at) - new Date(a.updated_at)
+          })
           // todo sort this
         }.bind(this))
     }

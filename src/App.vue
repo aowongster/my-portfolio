@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1 class="title is-1">Username's Github Project Portfolio</h1>
+    <h1 class="title is-1">Aowongster's Github Project Portfolio</h1>
     <!-- <img src="./assets/logo.png"> -->
     <!-- <hello></hello> -->
     <project-list></project-list>
