@@ -4,8 +4,8 @@
     <div class="tile is-parent is-vertical">
       <div class="tile is-child box">
         <ul>
-        <template v-for="(count, key) in tags">
-          <li>{{key}}:{{count}}</li>
+        <template v-for="(tag, index) in tags">
+          <li>{{tag[0]}}<span>{{tag[1]}}</span></li>
         </template>
         </ul>
       </div>
@@ -46,8 +46,18 @@ export default {
           tagDict[lang] = tagDict[lang] + 1 || 1
         }
       }
-      console.log(tagDict)
-      return tagDict
+      // console.log(tagDict)
+      // change dict to array
+      let tagArray = Object.keys(tagDict).map((key) => {
+        return [key, tagDict[key]]
+      })
+
+      // sorting by second element
+      tagArray.sort((first, second) => {
+        return second[1] - first[1]
+      })
+
+      return tagArray
     }
   },
   methods: {
@@ -66,4 +76,12 @@ export default {
 </script>
 
 <style lang="css">
+li {
+  display: inline-block;
+  padding: 5px;
+}
+
+li span {
+  display: block;
+}
 </style>
